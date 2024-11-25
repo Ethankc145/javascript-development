@@ -28,14 +28,14 @@ const longsentence2 =
 const variable1="hello, ";
 const variable2="world";
 
-const combine1 = variable1 + variable2;
+//const combine1 = variable1 + variable2;
 // console.log(combine1);
 
 const combine2 = variable2 + 20;
 //console.log(combine2);
 
 const combine3 = variable1 + variable2 + '!';
-console.log(combine3);
+//console.log(combine3);
 
 const number1=10
 const number2=20
@@ -51,4 +51,19 @@ const number2=20
 //const sentence = "My dog's is \nCoco";
 const sentence = "My dog's is \tCoco";
 //console.log(sentence);
-console.log(sentence.charAt(-1));
+//console.log(sentence.charAt(-1));
+//console.log(sentence.at(-5));
+
+const sampleString= 'something1';
+const sampleString2 = "something2";
+//console.log(sampleString.concat('This is ', 'aaaaaa', 'bbbbbbbbbbb'));
+
+//console.log('This is String.'.concat(' Example!')); // Invoking an instance method from a string literal
+
+//console.log(sampleString2.includes(2));
+
+//const sliceSample = sampleString.slice(2, -5);
+//console.log(sliceSample);
+
+const splitSampleString = "asdfasdfasdfasfdsasdfasdfasdf"
+console.log(splitSampleString.split('f'));

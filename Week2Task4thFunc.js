@@ -6,4 +6,4 @@ function formatFullname (Firstname, Lastname) {
     const formattedLastName = capitallize(Lastname);
     console.log(`${formattedFirstName} ${formattedLastName}`);
 }
-formatFullname("Ethan", "Huynh")
+formatFullname("ethan", "huynh")

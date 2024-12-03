@@ -8,3 +8,5 @@ const compare = (value1, value2) => {
     
 };
 compare(5, 10);
+
+// Instructor's feedback: Very good!

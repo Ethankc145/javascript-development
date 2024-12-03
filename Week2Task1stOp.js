@@ -12,3 +12,5 @@ function calulator () {
 const [output1, output2] = calulator();
 console.log(output1);
 console.log(output2);
+
+// Instructor's feedback: Very good!

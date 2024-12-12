@@ -11,35 +11,35 @@ class Person {
         this.#gender = gender;
         this.#hobby = hobby;
     }
-    get() {
+    get name() {
         return this.#name
     }
 
-    set(name) {
+    set name(name) {
         this.#name = name
     }
 
-    get() {
+    get age() {
         return this.#age
     }
 
-    set(age) {
+    set age(age) {
         this.#age = age
     }
 
-    get() {
+    get gender() {
         return this.#gender
     }
 
-    set(gender) {
+    set gender(gender) {
         this.#gender = gender
     }
 
-    get() {
+    get hobby() {
         return this.#hobby
     }
 
-    set(hobby) {
+    set hobby(hobby) {
         this.#hobby = hobby
     }
 

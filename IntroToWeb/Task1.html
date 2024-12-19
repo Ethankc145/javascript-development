@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: blue;
+            color: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            background-color: #d9f99d;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .form-container button:hover {
+            background-color: #bef264;
+        }
+
+        .submitted-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .submitted-info p {
+            margin: 5px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .red-text {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .gold-text {
+            color: gold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="First Name">
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Last Name">
+
+        <label for="jobTitle">Job Title</label>
+        <input type="text" id="jobTitle" placeholder="Job Title">
+
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Address">
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" placeholder="Phone">
+
+        <button onclick="handleSubmit()">Submit</button>
+
+        <div class="submitted-info" id="submittedInfo" style="display: none;">
+            <p id="statusMessage" class="red-text">Information Submitted!</p>
+            <p id="displayName" class="gold-text"></p>
+            <p id="displayJob" class="gold-text"></p>
+            <p id="displayAddress" class="gold-text"></p>
+            <p id="displayPhone" class="gold-text"></p>
+        </div>
+    </div>
+
+    <script>
+        function handleSubmit() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            const submittedInfo = document.getElementById('submittedInfo');
+            const displayName = document.getElementById('displayName');
+            const displayJob = document.getElementById('displayJob');
+            const displayAddress = document.getElementById('displayAddress');
+            const displayPhone = document.getElementById('displayPhone');
+
+            if (!firstName && !lastName && !jobTitle && !address && !phone) {
+                alert('Please fill in all fields!');
+                submittedInfo.style.display = 'none';
+                return;
+            }
+
+            submittedInfo.style.display = 'block';
+
+            displayName.textContent = `${firstName} ${lastName}`;
+            displayJob.textContent = jobTitle;
+            displayAddress.textContent = address;
+            displayPhone.textContent = phone;
+        }
+    </script>
+</body>
+</html>

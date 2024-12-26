@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "This is the Test Example",
+  "main": "test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ethan Huynh",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

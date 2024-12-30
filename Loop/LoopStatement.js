@@ -1,4 +1,4 @@
-// This is whlie loop
+// This is while loop
 //let counter = 0;
 //while (counter < 10){
 //    console.log(counter);

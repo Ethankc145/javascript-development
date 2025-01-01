@@ -1,0 +1,14 @@
+{
+  "name": "sandwich-shop",
+  "version": "1.0.0",
+  "description": "Bob Sandwich Shop",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ethan Huynh",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}

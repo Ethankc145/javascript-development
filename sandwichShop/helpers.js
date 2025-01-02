@@ -6,8 +6,10 @@ const fs = require("fs");
 
 exports.checkYorN = (input) => "ynYN".includes(input) && input.length == 1;
 
+// DRY (Don't repeat yourself)
 const showMenu = (menuData) => {
   let menuNumbers = "";
+console.log();
 
   for (let index = 0; index < menuData.length; index++) {
     const arr = [...menuData[index]];
@@ -15,48 +17,71 @@ const showMenu = (menuData) => {
     menuNumbers += (index + 1).toString();
     console.log(`${index + 1}. ${arr.join("")}`);
   }
-
+  
+  console.log();
+  
   return menuNumbers;
 };
+const promptUser = (promptMsgOne, promptMsgTwo, menuNumbers) => {
+  let bunChoice = prompt(promptMsgOne);
+  while (!(menuNumbers.includes(bunChoice) && bunChoice.length == 1)) {
+    bunChoice = prompt(promptMsgTwo);
+  }
+}
 
 exports.chooseYourBun = () => {
   const buns = Object.entries(bun);
+  const menuNumbers = showMenu(buns)
 
-  for (let index = 0; index < buns.length; index++) {
-    const arr = [...buns[index]];
-    arr.splice(1, 0, " - $");
-    console.log(`${index + 1}. ${arr.join("")}`);
-  }
+  // for (let index = 0; index < buns.length; index++) {
+  //   const arr = [...buns[index]];
+  //   arr.splice(1, 0, " - $");
+  //   console.log(`${index + 1}. ${arr.join("")}`);
+  // }
 
-  console.log();
-  let bunChoice = prompt("Please choose your bun: ");
-  while (!("1234".includes(bunChoice) && bunChoice.length == 1)) {
-    bunChoice = prompt("Please enter only the numbers on the menu: ");
-  }
+  // console.log();
+  // let bunChoice = prompt("Please choose your bun: ");
+  // while (!("1234".includes(bunChoice) && bunChoice.length == 1)) {
+  //   bunChoice = prompt("Please enter only the numbers on the menu: ");
+  // }
 
+  // DRY Concept
+  const bunChoice = promptUser(
+    "Please choose your bun: ",
+    menuNumbers
+  );
   return buns[parseInt(bunChoice) - 1];
 };
 
 exports.chooseYourCheese = () => {
   const cheeses = Object.entries(cheeseData.cheeses);
+  const menuNumbers = showMenu(cheeses)
 
-  for (let index = 0; index < cheeses.length; index++) {
-    const arr = [...cheeses[index]];
-    arr.splice(1, 0, " - $");
-    console.log(`${index + 1}. ${arr.join("")}`);
-  }
+  // for (let index = 0; index < cheeses.length; index++) {
+  //   const arr = [...cheeses[index]];
+  //   arr.splice(1, 0, " - $");
+  //   console.log(`${index + 1}. ${arr.join("")}`);
+  // }
 
   console.log();
-  let cheeseChoice = prompt("Please choose your cheese: ");
-  while (!("1234".includes(cheeseChoice) && cheeseChoice.length == 1)) {
-    cheeseChoice = prompt("Please enter only the numbers on the menu: ");
-  }
+  // let cheeseChoice = prompt("Please choose your cheese: ");
+  // while (!("1234".includes(cheeseChoice) && cheeseChoice.length == 1)) {
+  //   cheeseChoice = prompt("Please enter only the numbers on the menu: ");
+  // }
+
+  // DRY Concept
+  const cheeseChoice = promptUser(
+    "Please choose your cheese: ",
+    "Please enter only the numbers on the menu",
+    menuNumbers
+  );
 
   return cheeses[parseInt(cheeseChoice) - 1];
 };
 
 exports.chooseYourMeat = () => {
   try {
+    let menuNumbers = ""
     const meatData = fs
       .readFileSync("sandwichShop\\ingredients\\meats.txt", "utf8", {
         encoding: "utf8"
@@ -71,16 +96,21 @@ exports.chooseYourMeat = () => {
         " - $",
         meatData[index].slice(-4, meatData[index].length)
       ];
-
+      menuNumbers += (index + 1).toString();
       console.log(meatMenu.join(""));
     }
 
     console.log();
 
-    let meatChoice = prompt("Please choose your meat: ");
-    while (!("1234".includes(meatChoice) && meatChoice.length == 1)) {
-      meatChoice = prompt("Please enter only the numbers on the menu: ");
-    }
+    // let meatChoice = prompt("Please choose your meat: ");
+    // while (!("1234".includes(meatChoice) && meatChoice.length == 1)) {
+    //   meatChoice = prompt("Please enter only the numbers on the menu: ");
+    // }
+
+    const meatChoice = promptUser(
+      "Please choose your meat: ",
+      menuNumbers
+    );
 
     return meatData[parseInt(meatChoice) - 1];
   } catch (error) {
@@ -92,6 +122,7 @@ exports.chooseYourVeggies = () => {
   const veggiesArr = Object.entries(veggies);
 
   for (let index = 0; index < veggiesArr.length + 1; index++) {
+    menuNumbers += (index + 1).toString()
     if (index + 1 == veggiesArr.length + 1) {
       console.log(`${index + 1}. All`);
       break;
@@ -103,10 +134,15 @@ exports.chooseYourVeggies = () => {
 
   console.log();
 
-  let veggieChoice = prompt("Please choose your vegetables: ");
-  while (!("12345".includes(veggieChoice) && veggieChoice.length == 1)) {
-    veggieChoice = prompt("Please enter only the numbers on the menu: ");
-  }
+  // let veggieChoice = prompt("Please choose your vegetables: ");
+  // while (!("12345".includes(veggieChoice) && veggieChoice.length == 1)) {
+  //   veggieChoice = prompt("Please enter only the numbers on the menu: ");
+  // }
+
+  const veggieChoice = promptUser(
+    "Please choose your vegetables: ",
+    menuNumbers
+  );
 
   if (veggieChoice == "5") {
     return veggiesArr;
